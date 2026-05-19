@@ -10,31 +10,19 @@
 
 - **新闻查询**: 按关键词/语言搜索新闻
   - 暴露工具: `get_news(query, language, max_results, category)`
-  - 数据源: [GNews](https://gnews.io/) (免费版 100 次/天)
+  - 数据源: Google News RSS (免费，无需 API Key)
 
-- **服务端口**: `8081`
+- **服务端口**: `8080`
 
 ## 快速开始
 
-### 1. 配置
-
-```bash
-cp config/config.toml.example config/config.toml
-# 编辑 config/config.toml，填入你的 GNews API Key
-```
-
-GNews API Key 获取方式:
-1. 访问 https://gnews.io/dashboard
-2. 用邮箱注册免费账号
-3. 复制 Dashboard 中的 API Key
-
-### 2. 运行
+### 1. 运行
 
 ```bash
 # 构建
 cargo build --release
 
-# 启动服务 (端口 8081)
+# 启动服务 (端口 8080)
 cargo run --release --bin jane-mcp
 
 # 或一键后台启动
@@ -52,7 +40,7 @@ cargo run --release --bin jane-mcp
   "mcpServers": {
     "jane": {
       "transport": "sse",
-      "url": "http://localhost:8081/mcp"
+      "url": "http://localhost:8080/mcp"
     }
   }
 }
@@ -62,7 +50,7 @@ cargo run --release --bin jane-mcp
 
 在 Cursor Settings -> MCP Servers 中添加:
 
-- Name: `jane`, URL: `http://localhost:8081/mcp`
+- Name: `jane`, URL: `http://localhost:8080/mcp`
 
 ## 工具说明
 
@@ -93,7 +81,7 @@ cargo run --release --bin jane-mcp
 - Rust 2024
 - [rmcp](https://github.com/modelcontextprotocol/rust-sdk) - 官方 MCP Rust SDK
 - [Open-Meteo API](https://open-meteo.com/) - 免费天气数据
-- [GNews API](https://gnews.io/) - 免费新闻数据
+- Google News RSS - 免费新闻数据
 
 ## 许可证
 
