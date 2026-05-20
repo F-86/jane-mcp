@@ -16,17 +16,42 @@
 
 ## 快速开始
 
-### 1. 运行
+### 1. 构建
 
 ```bash
-# 构建
 cargo build --release
+```
 
-# 启动服务 (端口 8080)
-cargo run --release --bin jane-mcp
+### 2. 通过 systemd 运行
 
-# 或一键后台启动
-./start.sh
+```bash
+# 复制 service 文件到系统目录
+sudo cp jane-mcp.service /etc/systemd/system/
+
+# 重载 systemd 配置
+sudo systemctl daemon-reload
+
+# 启动服务
+sudo systemctl start jane-mcp
+
+# 设置开机自启
+sudo systemctl enable jane-mcp
+```
+
+常用命令：
+
+```bash
+# 查看状态
+sudo systemctl status jane-mcp
+
+# 查看日志
+sudo journalctl -u jane-mcp -f
+
+# 停止服务
+sudo systemctl stop jane-mcp
+
+# 重启服务
+sudo systemctl restart jane-mcp
 ```
 
 ### 3. MCP Client 配置

@@ -1,0 +1,16 @@
+[Unit]
+Description=Jane MCP Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/data/workspace/personal/jane-mcp/target/release/jane-mcp
+WorkingDirectory=/data/workspace/personal/jane-mcp
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=jane-mcp
+
+[Install]
+WantedBy=multi-user.target
